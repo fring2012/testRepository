@@ -40,6 +40,7 @@ public class App extends Application {
             OtaAgentPolicy.init(context)
                     .setMid("4325")
                     .commit();
+            DeviceInfo.getInstance().version = "0.0.8";
             DeviceInfo.getInstance().deviceType = "phone";
             DeviceInfo.getInstance().mid = "4325";
             DeviceInfo.getInstance().models = "MI3C";
