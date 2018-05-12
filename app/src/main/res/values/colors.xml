@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="iot_main_font_common_color">#ffffff</color>
+    <color name="iot_ringColor">#20f0f0f0</color>
+    <color name="item_bg">#FFFFFF</color>
+    <color name="hard_color">#48495f</color>
+    <color name="primary">#03A9F4</color>
+
+    <color name="iot_main_common_bg_color">#2cc4d3</color>
+    <color name="iot_font_error_color">#FF3011</color>
+
+    <color name="primary_dark">#0288D1</color>
+    <color name="accent">#448AFF</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="divider">#BDBDBD</color>
+
+    <color name="bg_gray">#ecedef</color>
+    <color name="bg_gray1">#e1e1e1</color>
+
+    <color name="transparent_black">#94333232</color>
+</resources>

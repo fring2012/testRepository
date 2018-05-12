@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iot_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary">
+
+    <include
+        layout="@layout/base_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rv_center_circle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        app:layout_heightPercent="60%w"
+        app:layout_marginTopPercent="18%"
+        app:layout_widthPercent="60%">
+
+        <!-- focusable允许获得焦点 tools:ignore忽略一些指定错误，或者 抑制警告-->
+        <com.example.administrator.ota_demo.view.ui.centerView.CenterCircleView
+            android:id="@+id/view_center_circle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            tools:ignore="NotSibling" />
+
+        <ImageView
+            android:id="@+id/iv_press"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@mipmap/ic_press"
+            android:visibility="invisible"
+            app:layout_heightPercent="25%"
+            app:layout_marginLeftPercent="55%"
+            app:layout_marginTopPercent="15%"
+            app:layout_widthPercent="25%" />
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/iot_error_tips"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@+id/rv_center_circle"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:textColor="@color/iot_font_error_color"-->
+    <!--app:layout_marginTopPercent="4%h"-->
+    <!--app:layout_textSizePercent="4%w"-->
+    <!--tools:text="测试文字"/>-->
+
+    <TextView
+        android:id="@+id/iot_version_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="126dp"
+        android:text="@string/cancel_download"
+        android:textColor="@color/iot_main_font_common_color"
+        app:layout_marginLeftPercent="15%"
+        app:layout_marginRightPercent="15%"
+        app:layout_marginTopPercent="8%"
+        app:layout_textSizePercent="5%"
+        tools:text="测试文字iot_version_detail" />
+
+    <LinearLayout
+        android:id="@+id/iot_ll_release_note"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iot_version_detail"
+        android:orientation="vertical"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginRightPercent="5%"
+        app:layout_marginTopPercent="4%">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/iot_release_note_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/iot_main_font_common_color"
+                app:layout_textSizePercent="4%"
+                tools:text="测试文字"/>
+
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/cancel_download"
+        android:theme="@style/MyButton"
+        app:layout_marginLeftPercent="5%"
+        tools:text="测试按钮"
+        tools:visibility="visible"/>
+
+</com.zhy.android.percent.support.PercentRelativeLayout>
