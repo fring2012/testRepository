@@ -1,5 +1,8 @@
 package com.example.administrator.ota_sdk.view.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import android.widget.Toolbar;
 import com.abupdate.iot_libs.info.DeviceInfo;
 import com.example.administrator.ota_sdk.R;
 import com.example.administrator.ota_sdk.presenter.Presenter;
+import com.example.administrator.ota_sdk.receiver.CheckAndDownloadInfoReceiver;
 import com.example.administrator.ota_sdk.view.ui.centerView.CenterLayout;
 
 import butterknife.BindView;
@@ -32,11 +36,15 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.currentVersionInfo)
     TextView currentVersionInfo;
 
+
     private Presenter presenter;
+    private CheckAndDownloadInfoReceiver mBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PackageManager packageManager = getPackageManager();
+        Log.d(TAG,getPackageName());
         centerLayout.setOnClickListener(new CenterLayout.OnClickListener() {
             @Override
             public void check_version() {
@@ -67,7 +75,23 @@ public class MainActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         before_check_version_ui();
+        registerReceiver();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(mBroadcastReceiver);
+    }
+
+    protected void registerReceiver(){
+        Intent intent = new Intent();
+        mBroadcastReceiver = new CheckAndDownloadInfoReceiver();
+        mBroadcastReceiver.setView(this);
+        intent.setAction("CheckAndDownloadInfoReceiver");
+        registerReceiver();
+    }
+
 
     public void before_check_version_ui(){
         centerLayout.before_check_version_ui();
@@ -96,6 +120,7 @@ public class MainActivity extends BaseActivity {
     public int getContentView() {
         return R.layout.activity_main;
     }
+
 
 
 }

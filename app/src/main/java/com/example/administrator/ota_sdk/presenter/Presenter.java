@@ -1,7 +1,9 @@
 package com.example.administrator.ota_sdk.presenter;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.abupdate.iot_libs.OtaAgentPolicy;
@@ -18,18 +20,27 @@ public class Presenter {
     }
     public void check_version(){
         activity.wait_ui();
-        OtaAgentPolicy.checkVersionAsync(new ICheckVersionCallback() {
-            @Override
-            public void onCheckSuccess(VersionInfo versionInfo) {
-                Log.d(TAG,"最新版本:" + versionInfo.versionName);
-                activity.after_succes_check_version_ui(versionInfo.versionName);
-            }
+        Intent intent = new Intent();
+        setParams(intent);
+        intent.setComponent(new ComponentName("com.abupdate.apk_up_receiver",
+                "com.abupdate.apk_up_receiver.broadcast.ApkUpInfoReceiver"));
+        intent.setAction("broadcast.ApkUpInfoReceiver");
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        activity.sendBroadcast(intent);
+        Log.d(TAG,"checkVersion() end");
+    }
+    public void setParams(Intent intent){
+        String packageName = activity.getApplicationContext().getPackageName();
 
-            @Override
-            public void onCheckFail(int status) {
-                Log.d(TAG,"错误信息:" + status);
-                activity.after_error_check_version_ui(status);
-            }
-        });
+        intent.putExtra("packageName",packageName);
+        intent.putExtra("receiverName", "CheckAndDownloadInfoReceiver");
+        intent.putExtra("receiverClass","com.example.administrator.ui_make.receiver.CheckAndDownloadInfoReceiver");
+        intent.putExtra("mid","4325");
+        intent.putExtra("deviceType","phone");
+        intent.putExtra("device","MI3C");
+        intent.putExtra("oem","212");
+        intent.putExtra("platform","BRCM23550");
+        intent.putExtra("productId","1525594277");
+        intent.putExtra("productSecret","c380eaa48f0248f9878a14857844d133");
     }
 }
