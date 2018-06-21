@@ -23,7 +23,6 @@ public class CheckAndDownloadInfoReceiver extends BroadcastReceiver {
                 if (resultState == 1000) {
                     String versionName = intent.getStringExtra("versionName");
                     String content = intent.getStringExtra("content");
-                    mainActivity.after_succes_check_version_ui(versionName);
                     Trace.d(TAG, "resultState:" + resultState + "versionName:" + versionName + "content:" + content);
                 } else {
                     String error = intent.getStringExtra("error");

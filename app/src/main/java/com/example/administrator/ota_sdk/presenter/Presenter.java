@@ -31,7 +31,6 @@ public class Presenter {
     }
     public void setParams(Intent intent){
         String packageName = activity.getApplicationContext().getPackageName();
-
         intent.putExtra("packageName",packageName);
         intent.putExtra("receiverName", "CheckAndDownloadInfoReceiver");
         intent.putExtra("receiverClass","com.example.administrator.ui_make.receiver.CheckAndDownloadInfoReceiver");
